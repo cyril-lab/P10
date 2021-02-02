@@ -9,14 +9,10 @@ addons:
 
 install:
   - pip install -r requirements.txt
-  - pip install tchappui-webdrivers
 
 branch:
    only:
     - master
-
-before_script:
-  - install-webdrivers --path /usr/local/bin/
 
 env:
   - DJANGO_SETTINGS_MODULE='settings.travis'
