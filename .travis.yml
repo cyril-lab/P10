@@ -9,7 +9,7 @@ addons:
 
 install:
   - pip install -r requirements.txt
-  - - pip install tchappui-webdrivers
+  - pip install tchappui-webdrivers
 
 branch:
    only:
