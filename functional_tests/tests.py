@@ -5,6 +5,12 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from substitute.models import User, Product, Category
 
+from selenium.webdriver import Firefox
+from selenium.webdriver.firefox.options import Options
+
+options = Options()
+options.add_argument('-headless')
+firefox = Firefox(firefox_options=options)
 
 class SeleniumTest(StaticLiveServerTestCase):
     """this class performs function tests"""
