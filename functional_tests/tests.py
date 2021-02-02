@@ -67,7 +67,7 @@ class SeleniumTest(StaticLiveServerTestCase):
         user = User.objects.get(username='adresse_mail@hotmail.fr')
         self.assertEqual(user.username, 'adresse_mail@hotmail.fr')
         self.assertEqual(user.first_name, 'test_name')
-        # time.sleep(2)
+        time.sleep(2)
 
         # Test login
         sel.get("{}/{}".format(self.live_server_url, "accounts/login"))
