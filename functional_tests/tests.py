@@ -50,7 +50,7 @@ class SeleniumTest(StaticLiveServerTestCase):
             .send_keys("chocolat", Keys.ENTER)
         sel.implicitly_wait(15)
         element = sel.find_element_by_id("product").text
-        self.assertEqual(element, "CHOCOLAT")
+        self.assertEqual(element, "chocolat")
         time.sleep(2)
 
         # Test signup
