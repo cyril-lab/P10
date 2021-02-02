@@ -43,7 +43,7 @@ class SeleniumTest(StaticLiveServerTestCase):
         # Test home page
         sel.get(url)
         self.assertIn('Accueil', sel.title)
-        #time.sleep(2)
+        time.sleep(2)
 
         # Test search top
         sel.find_element_by_id("search-header")\
@@ -51,7 +51,7 @@ class SeleniumTest(StaticLiveServerTestCase):
         sel.implicitly_wait(15)
         element = sel.find_element_by_id("product").text
         self.assertEqual(element, "chocolat")
-        #time.sleep(2)
+        time.sleep(2)
 
         # Test signup
         sel.get("{}/{}".format(url, "accounts/register"))
@@ -67,7 +67,7 @@ class SeleniumTest(StaticLiveServerTestCase):
         user = User.objects.get(username='adresse_mail@hotmail.fr')
         self.assertEqual(user.username, 'adresse_mail@hotmail.fr')
         self.assertEqual(user.first_name, 'test_name')
-        #time.sleep(2)
+        time.sleep(2)
 
         # Test login
         sel.get("{}/{}".format(self.live_server_url, "accounts/login"))
@@ -76,12 +76,12 @@ class SeleniumTest(StaticLiveServerTestCase):
             .send_keys('adresse_mail@hotmail.fr')
         sel.find_element_by_name('password').send_keys('mdp')
         sel.find_element_by_id("login-btn").click()
-        #time.sleep(1)
+        time.sleep(1)
 
         # Test favorites
         sel.get("{}/{}".format(self.live_server_url, "favorite"))
         self.assertIn('Favoris', sel.title)
-        #time.sleep(2)
+        time.sleep(2)
 
         # Test search botton
         sel.get(url)
@@ -90,7 +90,7 @@ class SeleniumTest(StaticLiveServerTestCase):
         element = sel.find_element_by_id("product").text
         self.assertEqual(element, "CHOCOLAT")
         self.assertIn('Produits', sel.title)
-        #time.sleep(2)
+        time.sleep(2)
 
         # Test product detail
         sel.find_element_by_class_name("card-title").click()
@@ -108,4 +108,4 @@ class SeleniumTest(StaticLiveServerTestCase):
         sel.find_element_by_id("logout-btn").click()
         sel.get("{}/{}".format(self.live_server_url, "favorite"))
         self.assertIn('Accueil', sel.title)
-        #time.sleep(2)
+        time.sleep(2)
