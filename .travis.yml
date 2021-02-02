@@ -1,0 +1,28 @@
+language: python
+
+python:
+  - '3.8'
+
+addons:
+
+  firefox: latest
+
+install:
+  - pip install -r requirements.txt
+
+before_script:
+
+  - install-webdrivers
+
+branch:
+   only:
+    - master
+
+env:
+  - DJANGO_SETTINGS_MODULE='settings.travis'
+
+services:
+  - postgresql
+
+script:
+  - python manage.py test

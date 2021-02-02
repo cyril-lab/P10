@@ -10,9 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
-
-import dj_database_url
-import django_heroku
 from pathlib import Path
 
 
@@ -25,19 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'u^6x(%qz5#q(u!_xsaviwl5ahil!ki%87&b!r7rh07h3^zq5nh'
-SECRET_KEY = os.environ.get("SECRET_KEY", 'u^6x(%qz5#q(u!_xsaviwl5ahil!ki%87&b!r7rh07h3^zq5nh')
-
-ENV = 'PRODUCTION'
+SECRET_KEY = 'u^6x(%qz5#q(u!_xsaviwl5ahil!ki%87&b!r7rh07h3^zq5nh'
 
 
-# SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('ENV') == 'PRODUCTION':
-    DEBUG = False
-else:
-    DEBUG = True
+DEBUG = True
 
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com', 'p8-oc-purbeurre.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -152,23 +143,16 @@ STATICFILES_DIRS = [
 AUTH_USER_MODEL = 'substitute.user'
 
 
-if os.environ.get('ENV') == 'PRODUCTION':
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# if os.environ.get('ENV') == 'PRODUCTION':
+#     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     # Static files settings
-    PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
     # Extra places for collectstatic to find static files.
-    STATICFILES_DIRS = (
-        os.path.join(PROJECT_ROOT, 'static'),
-    )
+#     STATICFILES_DIRS = (
+#        os.path.join(PROJECT_ROOT, 'static'),
+#     )
 
-if os.environ.get('ENV') == 'PRODUCTION':
-
-    db_from_env = dj_database_url.config(conn_max_age=500)
-    DATABASES['default'].update(db_from_env)
-
-if os.environ.get('ENV') == 'PRODUCTION':
-    django_heroku.settings(locals())

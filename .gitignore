@@ -3,3 +3,5 @@ venv/
 __pycache__
 .cache/
 /pur_beurre/htmlcov/
+settings/production.py
+/staticfiles/
